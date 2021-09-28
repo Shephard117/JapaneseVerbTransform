@@ -13,9 +13,13 @@
 		ED7D0EF22702C2E1005D0D19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7D0EF02702C2E1005D0D19 /* Main.storyboard */; };
 		ED7D0EF42702C2E5005D0D19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED7D0EF32702C2E5005D0D19 /* Assets.xcassets */; };
 		ED7D0EF72702C2E5005D0D19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7D0EF52702C2E5005D0D19 /* LaunchScreen.storyboard */; };
+		ED7D0F022702C46C005D0D19 /* VerbConjugationBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7D0F012702C46C005D0D19 /* VerbConjugationBrain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B73875E9499AC211B8C01C89 /* Pods_JapaneseVerbTransform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JapaneseVerbTransform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7B8DABC310E412694533494 /* Pods-JapaneseVerbTransform.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JapaneseVerbTransform.release.xcconfig"; path = "Target Support Files/Pods-JapaneseVerbTransform/Pods-JapaneseVerbTransform.release.xcconfig"; sourceTree = "<group>"; };
+		CF807DBEFAA0114600113A75 /* Pods-JapaneseVerbTransform.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JapaneseVerbTransform.debug.xcconfig"; path = "Target Support Files/Pods-JapaneseVerbTransform/Pods-JapaneseVerbTransform.debug.xcconfig"; sourceTree = "<group>"; };
 		ED7D0EE72702C2E1005D0D19 /* JapaneseVerbTransform.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JapaneseVerbTransform.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7D0EEA2702C2E1005D0D19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED7D0EEC2702C2E1005D0D19 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +28,7 @@
 		ED7D0EF32702C2E5005D0D19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED7D0EF62702C2E5005D0D19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED7D0EF82702C2E5005D0D19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED7D0F012702C46C005D0D19 /* VerbConjugationBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerbConjugationBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,11 +42,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE5542E6B0266CD92066AC9C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CF807DBEFAA0114600113A75 /* Pods-JapaneseVerbTransform.debug.xcconfig */,
+				C7B8DABC310E412694533494 /* Pods-JapaneseVerbTransform.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DAEC8D1F79C85A25D1542DE8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B73875E9499AC211B8C01C89 /* Pods_JapaneseVerbTransform.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		ED7D0EDE2702C2E1005D0D19 = {
 			isa = PBXGroup;
 			children = (
 				ED7D0EE92702C2E1005D0D19 /* JapaneseVerbTransform */,
 				ED7D0EE82702C2E1005D0D19 /* Products */,
+				CE5542E6B0266CD92066AC9C /* Pods */,
+				DAEC8D1F79C85A25D1542DE8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +82,38 @@
 			children = (
 				ED7D0EEA2702C2E1005D0D19 /* AppDelegate.swift */,
 				ED7D0EEC2702C2E1005D0D19 /* SceneDelegate.swift */,
-				ED7D0EEE2702C2E1005D0D19 /* ViewController.swift */,
-				ED7D0EF02702C2E1005D0D19 /* Main.storyboard */,
+				ED7D0F002702C438005D0D19 /* Model */,
+				ED7D0EFF2702C42E005D0D19 /* Controller */,
+				ED7D0EFE2702C426005D0D19 /* View */,
 				ED7D0EF32702C2E5005D0D19 /* Assets.xcassets */,
 				ED7D0EF52702C2E5005D0D19 /* LaunchScreen.storyboard */,
 				ED7D0EF82702C2E5005D0D19 /* Info.plist */,
 			);
 			path = JapaneseVerbTransform;
+			sourceTree = "<group>";
+		};
+		ED7D0EFE2702C426005D0D19 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ED7D0EF02702C2E1005D0D19 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ED7D0EFF2702C42E005D0D19 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ED7D0EEE2702C2E1005D0D19 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		ED7D0F002702C438005D0D19 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ED7D0F012702C46C005D0D19 /* VerbConjugationBrain.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +123,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED7D0EFB2702C2E5005D0D19 /* Build configuration list for PBXNativeTarget "JapaneseVerbTransform" */;
 			buildPhases = (
+				A183086A2E65CE72080E6BB5 /* [CP] Check Pods Manifest.lock */,
 				ED7D0EE32702C2E1005D0D19 /* Sources */,
 				ED7D0EE42702C2E1005D0D19 /* Frameworks */,
 				ED7D0EE52702C2E1005D0D19 /* Resources */,
@@ -132,12 +182,38 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A183086A2E65CE72080E6BB5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JapaneseVerbTransform-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		ED7D0EE32702C2E1005D0D19 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				ED7D0EEF2702C2E1005D0D19 /* ViewController.swift in Sources */,
+				ED7D0F022702C46C005D0D19 /* VerbConjugationBrain.swift in Sources */,
 				ED7D0EEB2702C2E1005D0D19 /* AppDelegate.swift in Sources */,
 				ED7D0EED2702C2E1005D0D19 /* SceneDelegate.swift in Sources */,
 			);
@@ -283,12 +359,14 @@
 		};
 		ED7D0EFC2702C2E5005D0D19 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF807DBEFAA0114600113A75 /* Pods-JapaneseVerbTransform.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8S9747MDPY;
 				INFOPLIST_FILE = JapaneseVerbTransform/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,12 +380,14 @@
 		};
 		ED7D0EFD2702C2E5005D0D19 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7B8DABC310E412694533494 /* Pods-JapaneseVerbTransform.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8S9747MDPY;
 				INFOPLIST_FILE = JapaneseVerbTransform/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
