@@ -59,7 +59,7 @@ class ViewController: UIViewController {
         var resultVerb = ""
         let verb1End = ["か","が","わ","さ","な","は","ば","た","ま","ら"]
         let verb2End = ["き","ぎ","い","し","に","ひ","び","ち","み","り"]
-        let verb3End: [Character] = ["く","ぐ","う","す","ぬ","ふ","ぷ","つ","む"]
+        let verb3End: [Character] = ["く","ぐ","う","す","ぬ","ふ","ぶ","つ","む"]
         let verb4End = ["け","げ","え","せ","ね","へ","べ","て","め","れ"]
         let verb5End = ["こう","ごう","おう","そう","のう","ほう","ぼう","とう","もう","ろう"]
         var endings: [String] {
@@ -79,9 +79,9 @@ class ViewController: UIViewController {
         }
         
         var index = 0
-        
+
         for char in verb3End {
-            if char == verb.last {
+            if char == verb.last! {
                 break
             }
             index += 1
