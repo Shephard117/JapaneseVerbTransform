@@ -50,10 +50,10 @@ class ViewController: UIViewController {
     }
     
     func masuForm(_ verb: String) -> String {
-        return verbForm(verb, numberOfForm: 2) + "ます"
+        return verbBase(verb, numberOfBase: 2) + "ます"
     }
     
-    func verbForm(_ verb: String, numberOfForm: Int) -> String{
+    func verbBase(_ verb: String, numberOfBase: Int) -> String{
         
         let verbRoot = verb.dropLast()
         var resultVerb = ""
@@ -61,16 +61,16 @@ class ViewController: UIViewController {
         let verb2End = ["き","ぎ","い","し","に","ひ","び","ち","み","り"]
         let verb3End: [Character] = ["く","ぐ","う","す","ぬ","ふ","ぷ","つ","む"]
         let verb4End = ["け","げ","え","せ","ね","へ","べ","て","め","れ"]
-        let verb5End = ["こ","ご","お","そ","の","ほ","ぼ","と","も","ろ"]
+        let verb5End = ["こう","ごう","おう","そう","のう","ほう","ぼう","とう","もう","ろう"]
         var endings: [String] {
             get {
-                if numberOfForm == 1{
+                if numberOfBase == 1{
                     return verb1End
-                } else if numberOfForm == 2 {
+                } else if numberOfBase == 2 {
                     return verb2End
-                } else if numberOfForm == 4 {
+                } else if numberOfBase == 4 {
                     return verb4End
-                } else if numberOfForm == 5 {
+                } else if numberOfBase == 5 {
                     return verb5End
                 } else {
                     return verb3End.map{String($0)}
@@ -87,7 +87,7 @@ class ViewController: UIViewController {
             index += 1
         }
         
-        if numberOfForm == 1 || numberOfForm == 2 {
+        if numberOfBase == 1 || numberOfBase == 2 {
             if verbConjugation(verb) {                             //определяем спряжение глагола
                 resultVerb = verbRoot + endings[index]
             } else {
@@ -97,7 +97,7 @@ class ViewController: UIViewController {
             resultVerb = verbRoot + endings[index]                  //если нужна 4 или 5 форма глагола
         }
         
-        if numberOfForm == 3 {
+        if numberOfBase == 3 {
             resultVerb = String(verbRoot)                           //если вдруг нужна 3 (словарная форма)
         }
         
