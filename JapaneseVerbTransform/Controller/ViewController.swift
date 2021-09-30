@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NaturalLanguage
 
 class ViewController: UIViewController {
 
@@ -25,11 +26,17 @@ class ViewController: UIViewController {
 
     @IBAction func defineConjugation(_ sender: UIButton) {
         
-        if sender.currentTitle == "Узнать спряжение" {
-            conjugationLabel.text = verbConjugation(kanaTextfield.text!) ? "Первое спряжение" : "Второе спряжение"
-        } else if sender.currentTitle == "ます форма" {
-            conjugationLabel.text = masuForm(kanaTextfield.text!)
+        if detectedLanguage(for: kanaTextfield.text!) == "Japanese" {
+            if sender.currentTitle == "Узнать спряжение" {
+                conjugationLabel.text = verbConjugation(kanaTextfield.text!) ? "Первое спряжение" : "Второе спряжение"
+            } else if sender.currentTitle == "ます форма" {
+                conjugationLabel.text = masuForm(kanaTextfield.text!)
+            }
+        } else {
+            conjugationLabel.text = "Введите глагол на японском хираганой или кандзи." 
         }
+        
+        
     }
     
     func verbConjugation(_ verb: String) -> Bool {
@@ -103,4 +110,13 @@ class ViewController: UIViewController {
         
         return resultVerb
     }
+    
+    func detectedLanguage(for string: String) -> String? {
+        let recognizer = NLLanguageRecognizer()
+        recognizer.processString(string)
+        guard let languageCode = recognizer.dominantLanguage?.rawValue else { return nil }
+        let detectedLanguage = Locale.current.localizedString(forIdentifier: languageCode)
+        return detectedLanguage
+    }
+    
 }
