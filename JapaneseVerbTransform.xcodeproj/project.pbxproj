@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		ED7D0EEB2702C2E1005D0D19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7D0EEA2702C2E1005D0D19 /* AppDelegate.swift */; };
 		ED7D0EED2702C2E1005D0D19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7D0EEC2702C2E1005D0D19 /* SceneDelegate.swift */; };
-		ED7D0EEF2702C2E1005D0D19 /* ConjugationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7D0EEE2702C2E1005D0D19 /* ConjugationController.swift */; };
+		ED7D0EEF2702C2E1005D0D19 /* VerbController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7D0EEE2702C2E1005D0D19 /* VerbController.swift */; };
 		ED7D0EF22702C2E1005D0D19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7D0EF02702C2E1005D0D19 /* Main.storyboard */; };
 		ED7D0EF42702C2E5005D0D19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED7D0EF32702C2E5005D0D19 /* Assets.xcassets */; };
 		ED7D0EF72702C2E5005D0D19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7D0EF52702C2E5005D0D19 /* LaunchScreen.storyboard */; };
@@ -24,7 +24,7 @@
 		ED7D0EE72702C2E1005D0D19 /* JapaneseVerbTransform.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JapaneseVerbTransform.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7D0EEA2702C2E1005D0D19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED7D0EEC2702C2E1005D0D19 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ED7D0EEE2702C2E1005D0D19 /* ConjugationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConjugationController.swift; sourceTree = "<group>"; };
+		ED7D0EEE2702C2E1005D0D19 /* VerbController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerbController.swift; sourceTree = "<group>"; };
 		ED7D0EF12702C2E1005D0D19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ED7D0EF32702C2E5005D0D19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED7D0EF62702C2E5005D0D19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 		ED7D0EFF2702C42E005D0D19 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				ED7D0EEE2702C2E1005D0D19 /* ConjugationController.swift */,
+				ED7D0EEE2702C2E1005D0D19 /* VerbController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -215,7 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED7D0EEF2702C2E1005D0D19 /* ConjugationController.swift in Sources */,
+				ED7D0EEF2702C2E1005D0D19 /* VerbController.swift in Sources */,
 				ED7D0F022702C46C005D0D19 /* VerbConjugationBrain.swift in Sources */,
 				ED7D0EEB2702C2E1005D0D19 /* AppDelegate.swift in Sources */,
 				ED7D0F04270573EF005D0D19 /* KanaConverter.swift in Sources */,

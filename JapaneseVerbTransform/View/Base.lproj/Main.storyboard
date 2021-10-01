@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Conjugation Controller-->
+        <!--Verb Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ConjugationController" customModule="JapaneseVerbTransform" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="VerbController" customModule="JapaneseVerbTransform" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,6 +52,22 @@
                                 <state key="normal" title="なければ　なりません　форма"/>
                                 <connections>
                                     <action selector="defineConjugation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bi6-F7-GNQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qRi-Vy-mdy">
+                                <rect key="frame" x="306" y="238" width="68" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="て форма"/>
+                                <connections>
+                                    <action selector="defineConjugation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9zB-HV-jNR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S0y-5Z-xOv">
+                                <rect key="frame" x="295" y="276" width="68" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="た форма"/>
+                                <connections>
+                                    <action selector="defineConjugation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="McU-jo-90N"/>
                                 </connections>
                             </button>
                         </subviews>

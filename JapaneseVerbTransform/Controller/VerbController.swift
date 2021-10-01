@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ConjugationController: UIViewController {
+class VerbController: UIViewController {
 
     @IBOutlet weak var kanaTextfield: UITextField!
     @IBOutlet weak var conjugationLabel: UILabel!
@@ -20,15 +20,24 @@ class ConjugationController: UIViewController {
 
 
     @IBAction func defineConjugation(_ sender: UIButton) {
-        
+    
         if conjugationBrain.detectedLanguage(for: kanaTextfield.text!) == "Japanese" {
-            if sender.currentTitle == "Узнать спряжение" {
+            
+            switch sender.currentTitle {
+            case "Узнать спряжение":
                 conjugationLabel.text = conjugationBrain.verbConjugation(kanaTextfield.text!) ? "Первое спряжение" : "Второе спряжение"
-            } else if sender.currentTitle == "ます форма" {
+            case "ます форма":
                 conjugationLabel.text = conjugationBrain.masuForm(kanaTextfield.text!)
-            } else if sender.currentTitle == "なければ　なりません　форма" {
-                
+            case "なければ　なりません　форма":
+                conjugationLabel.text = conjugationBrain.nakerebaNarimasenForm(kanaTextfield.text!)
+            case "て форма":
+                conjugationLabel.text = conjugationBrain.teForm(kanaTextfield.text!)
+            case "た форма":
+                conjugationLabel.text = conjugationBrain.taForm(conjugationBrain.teForm(kanaTextfield.text!))
+            default:
+                conjugationLabel.text = "Что-то пошло не так"
             }
+            
         } else {
             conjugationLabel.text = "Введите глагол на японском хираганой или кандзи."
         }

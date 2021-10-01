@@ -34,11 +34,7 @@ class VerbConjugationBrain {
         }
     }
     
-    //MARK:- Create masu form
-    func masuForm(_ verb: String) -> String {
-        return verbBase(verb, numberOfBase: 2) + "ます"
-    }
-    
+
     //MARK:- Find all 5 base of verb
     func verbBase(_ verb: String, numberOfBase: Int) -> String{
         
@@ -64,7 +60,6 @@ class VerbConjugationBrain {
                 }
             }
         }
-        
         var index = 0
 
         for char in verb3End {
@@ -91,12 +86,66 @@ class VerbConjugationBrain {
         return resultVerb
     }
     
+    //MARK:- Create masu form
+    func masuForm(_ verb: String) -> String {
+        return verbBase(verb, numberOfBase: 2) + "ます"
+    }
+    
+    //MARK:- Create nakereba narimasen form
+    
+    func nakerebaNarimasenForm(_ verb: String) -> String {
+        return verbBase(verb, numberOfBase: 1) + "なければなりません"
+    }
+    
+    //MARK:- Create te form
+    
+    func teForm(_ verb: String) -> String {
+        
+        var resultVerb = ""
+        let verbRoot = verb.dropLast()
+        let kana1: [Character] = ["う", "つ", "る"]
+        let kana2: [Character] = ["ぶ", "む", "ぬ"]
+        let kana3: [Character] = ["く", "ぐ",]
+        
+        if verbConjugation(verb) {
+            if kana1.contains(verb.last!) || verb == "行く" {
+                resultVerb = verbRoot + "って"
+            } else if kana2.contains(verb.last!) {
+                resultVerb = verbRoot + "んで"
+            } else if verb.last! == kana3[0] {
+                resultVerb = verbRoot + "いて"
+            } else if verb.last! == kana3[1] {
+                resultVerb = verbRoot + "いで"
+            } else {
+                resultVerb = verbRoot + "して"
+            }
+            
+        } else {
+            resultVerb = verbRoot + "て"
+        }
+        return resultVerb
+    }
+    
+    //MARK:- Create ta form
+    
+    func taForm(_ verb: String) -> String {
+        
+//        let teFormVerb = teForm(verb)
+    
+        if verb.last == "て" {
+            return verb.dropLast() + "た"
+        } else {
+            return verb.dropLast() + "だ"
+        }
+    }
     //MARK:- Define input language
     func detectedLanguage(for string: String) -> String? {
+        
         let recognizer = NLLanguageRecognizer()
         recognizer.processString(string)
         guard let languageCode = recognizer.dominantLanguage?.rawValue else { return nil }
         let detectedLanguage = Locale.current.localizedString(forIdentifier: languageCode)
         return detectedLanguage
+        
     }
 }
