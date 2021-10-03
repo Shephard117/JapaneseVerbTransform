@@ -27,7 +27,7 @@ class VerbTransformBrain {
         
         let kanaVerb = verb.hiragana
         let romajiVerb = kanaVerb.applyingTransform(.toLatin, reverse: false)
-  
+        
         if verb2conjugationExeptionKana.contains(verb) || verb2conjugationExeptionKanji.contains(verb) {
             return .one
         } else if verb == "寝る" {
@@ -35,7 +35,9 @@ class VerbTransformBrain {
         }
         if romajiVerb!.hasSuffix("iru") || romajiVerb!.hasSuffix("eru") {
             return .two
-        } else {
+        } else if verb == "くる" || verb == "来る" || verb == "する"{
+            return .three
+        }else {
             return .one
         }
     }
@@ -74,21 +76,58 @@ class VerbTransformBrain {
             }
             index += 1
         }
-        
-        if numberOfBase == 1 || numberOfBase == 2 {
-            if verbConjugation(verb) == VerbConjugation.one {                             //определяем спряжение глагола
-                resultVerb = verbRoot + endings[index]
-            } else {
-                resultVerb = String(verbRoot)
-            }
+        if verbConjugation(verb) == .three {                                  //неправильный глагол 3 спряжение
+            resultVerb = thirdConjugationBase(verb, numberOfBase)
         } else {
-            resultVerb = verbRoot + endings[index]                  //если нужна 4 или 5 форма глагола
+            if numberOfBase == 1 || numberOfBase == 2 {
+                if verbConjugation(verb) == VerbConjugation.one {                     //определяем спряжение глагола
+                    resultVerb = verbRoot + endings[index]
+                } else {
+                    resultVerb = String(verbRoot)
+                }
+            } else {
+                resultVerb = verbRoot + endings[index]                  //если нужна 4 или 5 форма глагола
+            }
         }
         
         if numberOfBase == 3 {
             resultVerb = verb                           //если вдруг нужна 3 (словарная форма)
         }
         
+        return resultVerb
+    }
+    
+    //MARK:- Third conjugation
+    func thirdConjugationBase(_ verb: String,_ numberOfBase: Int) -> String {
+        var resultVerb = ""
+        if verb == "する" {
+            switch numberOfBase {
+            case 1:
+                resultVerb = "し、さ、せ"
+            case 2:
+                resultVerb = "し"
+            case 3:
+                resultVerb = verb
+            case 4:
+                resultVerb = "すれ"
+            default:
+                resultVerb = "しよう"
+            }
+            
+        } else {
+            switch numberOfBase {
+            case 1:
+                resultVerb = "こ"
+            case 2:
+                resultVerb = "き"
+            case 3:
+                resultVerb = verb
+            case 4:
+                resultVerb = "けれ"
+            default:
+                resultVerb = "こよう"
+            }
+        }
         return resultVerb
     }
     
@@ -100,7 +139,11 @@ class VerbTransformBrain {
     //MARK:- Create nakereba narimasen form
     
     func nakerebaNarimasenForm(_ verb: String) -> String {
-        return verbBase(verb, numberOfBase: 1) + "なければなりません"
+        if verb == "する" {
+            return String(verbBase(verb, numberOfBase: 1).first!) + "なければなりません"
+        } else {
+            return verbBase(verb, numberOfBase: 1) + "なければなりません"
+        }
     }
     
     //MARK:- Create te form
@@ -112,8 +155,9 @@ class VerbTransformBrain {
         let kana1: [Character] = ["う", "つ", "る"]
         let kana2: [Character] = ["ぶ", "む", "ぬ"]
         let kana3: [Character] = ["く", "ぐ",]
-        
-        if verbConjugation(verb) == VerbConjugation.one {
+        if verbConjugation(verb) == .three{
+            resultVerb = verbBase(verb, numberOfBase: 2) + "て"
+        } else if verbConjugation(verb) == .one {
             if kana1.contains(verb.last!) || verb == "行く" {
                 resultVerb = verbRoot + "って"
             } else if kana2.contains(verb.last!) {
@@ -147,13 +191,23 @@ class VerbTransformBrain {
     
     //MARK:- Negative form
     func negativeForm(_ verb: String) -> String {
-        let firstBase = verbBase(verb, numberOfBase: 1)
-        return firstBase + "ない"
+        if verb == "する" {
+            return String(verbBase(verb, numberOfBase: 1).first!) + "ない"
+        } else {
+        return verbBase(verb, numberOfBase: 1) + "ない"
+        }
     }
     
     //MARK:- Potencial form
     func potencialForm(_ verb: String) -> String {
-        if verbConjugation(verb) == VerbConjugation.one {
+        
+        if verbConjugation(verb) == .three {
+            if verb == "する" {
+                return "できる"
+            } else {
+                return verbBase(verb, numberOfBase: 1) + "られる"
+            }
+        } else if verbConjugation(verb) == .one {
             return verbBase(verb, numberOfBase: 4) + "る"
         } else {
             return verb.dropLast() + "られる"
