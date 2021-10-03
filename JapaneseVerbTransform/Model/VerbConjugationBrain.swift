@@ -8,13 +8,14 @@
 import Foundation
 import NaturalLanguage
 
-class VerbConjugationBrain {
+class VerbTransformBrain {
     
     private let verb2conjugationExeptionKanji = ["嘲る","焦る","弄る","入る","要る","限る","帰る","切る","軋る","蹴る","混じる","参る","詰る","握る","罵る","練る","茂る","湿る","知る","誹る","滑る","喋る","散る","照る","入る","走る","捻る","減る"]
     
     private let verb2conjugationExeptionKana = ["あざける","あせる","いじる","いる","せびる","かぎる","かじる","かえる","きる","きしる","ける","まじる","こんじる","まいる","むしる","なじる","にぎる","ののしる","ねる","しげる","しめる","しる","そしる","すべる","しゃべる","ちる","てる","はいる","はしる","ひねる","へる","ふける"]
     
     private let conjugation1Kana: [Character] = ["く","ぐ","う","す","ぬ","ふ","ぷ","つ","む"]
+    
     
     //MARK:- Determine verb conjugation
     func verbConjugation(_ verb: String) -> Bool {
@@ -130,12 +131,27 @@ class VerbConjugationBrain {
     
     func taForm(_ verb: String) -> String {
         
-//        let teFormVerb = teForm(verb)
+        let teFormVerb = teForm(verb)
     
-        if verb.last == "て" {
-            return verb.dropLast() + "た"
+        if teFormVerb.last == "て" {
+            return teFormVerb.dropLast() + "た"
         } else {
-            return verb.dropLast() + "だ"
+            return teFormVerb.dropLast() + "だ"
+        }
+    }
+    
+    //MARK:- Negative form
+    func negativeForm(_ verb: String) -> String {
+        let firstBase = verbBase(verb, numberOfBase: 1)
+        return firstBase + "ない"
+    }
+    
+    //MARK:- Potencial form
+    func potencialForm(_ verb: String) -> String {
+        if verbConjugation(verb) {
+            return verbBase(verb, numberOfBase: 4) + "る"
+        } else {
+            return verb.dropLast() + "られる"
         }
     }
     //MARK:- Define input language

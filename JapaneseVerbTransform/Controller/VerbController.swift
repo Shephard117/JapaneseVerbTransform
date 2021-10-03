@@ -12,7 +12,7 @@ class VerbController: UIViewController {
     @IBOutlet weak var kanaTextfield: UITextField!
     @IBOutlet weak var conjugationLabel: UILabel!
     
-    let conjugationBrain = VerbConjugationBrain()
+    let transformBrain = VerbTransformBrain()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,29 +20,36 @@ class VerbController: UIViewController {
 
 
     @IBAction func defineConjugation(_ sender: UIButton) {
+       
+       updateUI(sender, conjugationLabel, kanaTextfield)
+    }
     
-        if conjugationBrain.detectedLanguage(for: kanaTextfield.text!) == "Japanese" {
+    func updateUI(_ button: UIButton, _ label: UILabel, _ textField: UITextField){
+        
+        if transformBrain.detectedLanguage(for: textField.text!) == "Japanese" {
             
-            switch sender.currentTitle {
-            case "Узнать спряжение":
-                conjugationLabel.text = conjugationBrain.verbConjugation(kanaTextfield.text!) ? "Первое спряжение" : "Второе спряжение"
-            case "ます форма":
-                conjugationLabel.text = conjugationBrain.masuForm(kanaTextfield.text!)
-            case "なければ　なりません　форма":
-                conjugationLabel.text = conjugationBrain.nakerebaNarimasenForm(kanaTextfield.text!)
-            case "て форма":
-                conjugationLabel.text = conjugationBrain.teForm(kanaTextfield.text!)
-            case "た форма":
-                conjugationLabel.text = conjugationBrain.taForm(conjugationBrain.teForm(kanaTextfield.text!))
+            switch button.tag {
+            case 0:
+                label.text = transformBrain.verbConjugation(textField.text!) ? "Первое спряжение" : "Второе спряжение"
+            case 1:
+                label.text = transformBrain.masuForm(textField.text!)
+            case 2:
+                label.text = transformBrain.nakerebaNarimasenForm(textField.text!)
+            case 3:
+                label.text = transformBrain.teForm(textField.text!)
+            case 4:
+                label.text = transformBrain.taForm(textField.text!)
+            case 5:
+                label.text = transformBrain.negativeForm(textField.text!)
+            case 6:
+                label.text = transformBrain.potencialForm(textField.text!)
             default:
-                conjugationLabel.text = "Что-то пошло не так"
+                label.text = "Что-то пошло не так"
             }
             
         } else {
-            conjugationLabel.text = "Введите глагол на японском хираганой или кандзи."
+            label.text = "Введите глагол на японском хираганой или кандзи."
         }
     }
-    
-    
     
 }
