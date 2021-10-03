@@ -16,22 +16,27 @@ class VerbTransformBrain {
     
     private let conjugation1Kana: [Character] = ["く","ぐ","う","す","ぬ","ふ","ぷ","つ","む"]
     
+    enum VerbConjugation: String {
+        case one = "Первое спряжение"
+        case two = "Второе спряжение"
+        case three = "Третье спряжение"
+    }
     
     //MARK:- Determine verb conjugation
-    func verbConjugation(_ verb: String) -> Bool {
+    func verbConjugation(_ verb: String) -> VerbConjugation {
         
         let kanaVerb = verb.hiragana
         let romajiVerb = kanaVerb.applyingTransform(.toLatin, reverse: false)
   
         if verb2conjugationExeptionKana.contains(verb) || verb2conjugationExeptionKanji.contains(verb) {
-            return true
+            return .one
         } else if verb == "寝る" {
-            return false
+            return .two
         }
         if romajiVerb!.hasSuffix("iru") || romajiVerb!.hasSuffix("eru") {
-            return false
+            return .two
         } else {
-            return true
+            return .one
         }
     }
     
@@ -71,7 +76,7 @@ class VerbTransformBrain {
         }
         
         if numberOfBase == 1 || numberOfBase == 2 {
-            if verbConjugation(verb) {                             //определяем спряжение глагола
+            if verbConjugation(verb) == VerbConjugation.one {                             //определяем спряжение глагола
                 resultVerb = verbRoot + endings[index]
             } else {
                 resultVerb = String(verbRoot)
@@ -108,7 +113,7 @@ class VerbTransformBrain {
         let kana2: [Character] = ["ぶ", "む", "ぬ"]
         let kana3: [Character] = ["く", "ぐ",]
         
-        if verbConjugation(verb) {
+        if verbConjugation(verb) == VerbConjugation.one {
             if kana1.contains(verb.last!) || verb == "行く" {
                 resultVerb = verbRoot + "って"
             } else if kana2.contains(verb.last!) {
@@ -148,7 +153,7 @@ class VerbTransformBrain {
     
     //MARK:- Potencial form
     func potencialForm(_ verb: String) -> String {
-        if verbConjugation(verb) {
+        if verbConjugation(verb) == VerbConjugation.one {
             return verbBase(verb, numberOfBase: 4) + "る"
         } else {
             return verb.dropLast() + "られる"

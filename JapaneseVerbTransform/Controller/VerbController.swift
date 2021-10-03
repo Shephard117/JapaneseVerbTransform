@@ -30,7 +30,7 @@ class VerbController: UIViewController {
             
             switch button.tag {
             case 0:
-                label.text = transformBrain.verbConjugation(textField.text!) ? "Первое спряжение" : "Второе спряжение"
+                label.text = transformBrain.verbConjugation(textField.text!).rawValue
             case 1:
                 label.text = transformBrain.masuForm(textField.text!)
             case 2:
