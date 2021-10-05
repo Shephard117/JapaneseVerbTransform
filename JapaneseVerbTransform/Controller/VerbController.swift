@@ -10,7 +10,7 @@ import UIKit
 class VerbController: UIViewController {
 
     @IBOutlet weak var kanaTextfield: UITextField!
-    @IBOutlet weak var conjugationLabel: UILabel!
+    @IBOutlet weak var kanaLabel: UILabel!
     
     let transformBrain = VerbTransformBrain()
 
@@ -21,7 +21,7 @@ class VerbController: UIViewController {
 
     @IBAction func defineConjugation(_ sender: UIButton) {
        
-       updateUI(sender, conjugationLabel, kanaTextfield)
+       updateUI(sender, kanaLabel, kanaTextfield)
     }
     
     func updateUI(_ button: UIButton, _ label: UILabel, _ textField: UITextField){
