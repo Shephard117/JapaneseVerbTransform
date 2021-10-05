@@ -44,7 +44,7 @@ class VerbTransformBrain {
     
 
     //MARK:- Find all 5 base of verb
-    func verbBase(_ verb: String, numberOfBase: Int) -> String{
+    private func verbBase(_ verb: String, numberOfBase: Int) -> String{
         
         let verbRoot = verb.dropLast()
         var resultVerb = ""
@@ -80,7 +80,7 @@ class VerbTransformBrain {
             resultVerb = thirdConjugationBase(verb, numberOfBase)
         } else {
             if numberOfBase == 1 || numberOfBase == 2 {
-                if verbConjugation(verb) == VerbConjugation.one {                     //определяем спряжение глагола
+                if verbConjugation(verb) == VerbConjugation.one {                //определяем спряжение глагола
                     resultVerb = verbRoot + endings[index]
                 } else {
                     resultVerb = String(verbRoot)
